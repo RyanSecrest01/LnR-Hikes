@@ -36,6 +36,69 @@ const { Content } = await render(hike);
     </div>
 
     <div>
+        <a
+            href={hike.data.allTrailsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block rounded-lg border px-4 py-2 text-sm font-medium hover:bg-zinc-50"
+        >
+            View on AllTrails
+        </a>
+    </div>
+
+    {hike.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+            {hike.data.tags.map((tag) => (
+            <span class="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-700">
+                {tag}
+            </span>
+            ))}
+        </div>
+    )}
+
+    <section>
+        <h2 class="mb-3 text-2xl font-semibold">Ratings</h2>
+
+        <div class="grid gap-3 md:grid-cols-2">
+            <div class="rounded-xl border p-4">
+            <p class="text-sm text-zinc-500">Trail Quality</p>
+            <p class="text-2xl font-bold">{hike.data.ratings.trailQuality}</p>
+            </div>
+
+            <div class="rounded-xl border p-4">
+            <p class="text-sm text-zinc-500">Views</p>
+            <p class="text-2xl font-bold">{hike.data.ratings.views}/10</p>
+            </div>
+
+            <div class="rounded-xl border p-4">
+            <p class="text-sm text-zinc-500">Crowd</p>
+            <p class="text-2xl font-bold">{hike.data.ratings.crowd}</p>
+            </div>
+
+            <div class="rounded-xl border p-4">
+            <p class="text-sm text-zinc-500">Overall</p>
+            <p class="text-2xl font-bold">{hike.data.ratings.overall}/10</p>
+            </div>
+        </div>
+    </section>
+
+    {hike.data.gallery.length > 0 && (
+        <section>
+            <h2 class="mb-3 text-2xl font-semibold">Photos</h2>
+
+            <div class="grid gap-3 md:grid-cols-2">
+            {hike.data.gallery.map((img) => (
+                <img
+                src={img}
+                alt={hike.data.title}
+                class="h-64 w-full rounded-xl object-cover"
+                />
+            ))}
+            </div>
+        </section>
+    )}
+
+    <div>
       <h2 class="mb-2 text-2xl font-semibold">Review</h2>
       <div class="prose max-w-none">
         <Content />

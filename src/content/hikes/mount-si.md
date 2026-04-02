@@ -5,16 +5,16 @@ location: "North Bend, WA"
 distanceMiles: 8.0
 elevationGainFt: 3150
 difficulty: "Hard"
-allTrailsUrl: "https://www.alltrails.com/"
+allTrailsUrl: "https://www.alltrails.com/trail/us/washington/mount-si-trail"
 cover: "/images/hikes/mount-si/cover.jpeg"
 gallery:
   - "/images/hikes/mount-si/1.jpg"
   - "/images/hikes/mount-si/2.jpg"
 ratings:
-  trailQuality: 7
-  views: 7
-  crowd: 5
-  overall: 7
+  trailQuality: "Moderate"
+  views: 10
+  crowd: "Popular"
+  overall: 8
 tags:
   - "summit"
   - "popular"

@@ -5,15 +5,15 @@ location: "North Bend, WA"
 distanceMiles: 4.0
 elevationGainFt: 1160
 difficulty: "Moderate"
-allTrailsUrl: "https://www.alltrails.com/"
+allTrailsUrl: "https://www.alltrails.com/trail/us/washington/rattlesnake-ledge"
 cover: "/images/hikes/rattlesnake/cover.jpg"
 gallery:
   - "/images/hikes/rattlesnake/1.jpg"
   - "/images/hikes/rattlesnake/2.jpg"
 ratings:
-  trailQuality: 7
+  trailQuality: "Busy"
   views: 8
-  crowd: 4
+  crowd: "Popular"
   overall: 7
 tags:
   - "viewpoint"

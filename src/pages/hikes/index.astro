@@ -26,6 +26,16 @@ const hikes = await getCollection("hikes");
           <p class="text-sm text-zinc-600">
             Overall: {hike.data.ratings.overall}/10
           </p>
+
+          {hike.data.tags.length > 0 && (
+            <div class="mt-3 flex flex-wrap gap-2">
+              {hike.data.tags.map((tag) => (
+                <span class="rounded-full border border-zinc-300 bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-800">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </a>
     ))}
