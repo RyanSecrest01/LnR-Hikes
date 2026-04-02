@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const hikes = await getCollection("hikes");
+
+  return hikes.map((hike) => ({
+    params: { slug: hike.id },
+    props: { hike },
+  }));
+}
+
+const { hike } = Astro.props;
+const { Content } = await render(hike);
+---
+
+<BaseLayout title={`${hike.data.title} | RyLuTrails`}>
+  <h1>{hike.data.title}</h1>
+  <p>{hike.data.location}</p>
+
+  <p>Distance: {hike.data.distanceMiles} miles</p>
+  <p>Elevation Gain: {hike.data.elevationGainFt} ft</p>
+  <p>Difficulty: {hike.data.difficulty}</p>
+  <p>Overall: {hike.data.ratings.overall}/10</p>
+
+  <h2>Review</h2>
+  <Content />
+</BaseLayout>

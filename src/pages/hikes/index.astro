@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const hikes = await getCollection("hikes");
+---
+
+<BaseLayout title="Hikes | RyLuTrails">
+  <h1 class="mb-6 text-3xl font-bold">Hikes</h1>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    {hikes.map((hike) => (
+      <a
+        href={`/hikes/${hike.id}`}
+        class="block overflow-hidden rounded-xl border transition hover:shadow-md"
+      >
+        <img
+          src={hike.data.cover}
+          alt={hike.data.title}
+          class="h-48 w-full object-cover"
+        />
+
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">{hike.data.title}</h2>
+          <p class="text-sm text-zinc-600">{hike.data.location}</p>
+          <p class="text-sm text-zinc-600">
+            Overall: {hike.data.ratings.overall}/10
+          </p>
+        </div>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
