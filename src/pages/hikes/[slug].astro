@@ -16,14 +16,30 @@ const { Content } = await render(hike);
 ---
 
 <BaseLayout title={`${hike.data.title} | RyLuTrails`}>
-  <h1>{hike.data.title}</h1>
-  <p>{hike.data.location}</p>
+  <article class="space-y-6">
+    <div>
+      <h1 class="text-4xl font-bold">{hike.data.title}</h1>
+      <p class="text-zinc-600">{hike.data.location}</p>
+    </div>
 
-  <p>Distance: {hike.data.distanceMiles} miles</p>
-  <p>Elevation Gain: {hike.data.elevationGainFt} ft</p>
-  <p>Difficulty: {hike.data.difficulty}</p>
-  <p>Overall: {hike.data.ratings.overall}/10</p>
+    <img
+      src={hike.data.cover}
+      alt={hike.data.title}
+      class="h-72 w-full rounded-xl object-cover"
+    />
 
-  <h2>Review</h2>
-  <Content />
+    <div class="grid gap-3 rounded-xl border p-4 text-sm md:grid-cols-2">
+      <p><strong>Distance:</strong> {hike.data.distanceMiles} miles</p>
+      <p><strong>Elevation Gain:</strong> {hike.data.elevationGainFt} ft</p>
+      <p><strong>Difficulty:</strong> {hike.data.difficulty}</p>
+      <p><strong>Overall:</strong> {hike.data.ratings.overall}/10</p>
+    </div>
+
+    <div>
+      <h2 class="mb-2 text-2xl font-semibold">Review</h2>
+      <div class="prose max-w-none">
+        <Content />
+      </div>
+    </div>
+  </article>
 </BaseLayout>
