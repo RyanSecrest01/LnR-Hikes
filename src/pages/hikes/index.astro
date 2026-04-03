@@ -2,7 +2,9 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const hikes = await getCollection("hikes");
+const hikes = (await getCollection("hikes")).sort(
+  (a, b) => new Date(b.data.date) - new Date(a.data.date)
+);
 ---
 
 <BaseLayout title="Hikes | RyLuTrails">

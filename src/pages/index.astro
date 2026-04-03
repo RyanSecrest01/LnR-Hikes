@@ -3,7 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 const hikes = await getCollection("hikes");
-const latestHikes = hikes.slice(0, 2);
+const latestHikes = [...hikes]
+  .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
+  .slice(0, 2);
 ---
 
 <BaseLayout title="RyluTrails">
@@ -13,6 +15,14 @@ const latestHikes = hikes.slice(0, 2);
       Hikes, photos, and ratings from Ryan and Lucas.
     </p>
   </section>
+
+  <div class="mt-6 overflow-hidden rounded-2xl border">
+    <img
+      src="/images/hikes/central-peak/4.jpeg"
+      alt="RyLuTrails featured hike"
+      class="h-72 w-full object-cover"
+    />
+  </div>
 
   <section class="mt-10">
     <h2 class="mb-4 text-2xl font-semibold">Latest Hikes</h2>

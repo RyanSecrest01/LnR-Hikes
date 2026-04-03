@@ -1,6 +1,6 @@
 ---
 title: "Mount Si"
-date: "2026-04-02"
+date: "2026-03-05"
 location: "North Bend, WA"
 distanceMiles: 8.0
 elevationGainFt: 3150

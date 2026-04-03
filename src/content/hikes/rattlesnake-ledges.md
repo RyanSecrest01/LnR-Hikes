@@ -1,6 +1,6 @@
 ---
 title: "Rattlesnake Ledges"
-date: "2026-04-01"
+date: "2026-02-20"
 location: "North Bend, WA"
 distanceMiles: 4.0
 elevationGainFt: 1160
