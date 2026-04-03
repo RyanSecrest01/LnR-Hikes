@@ -3,6 +3,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="About | RyLuTrails">
-  <h1>About</h1>
-  <p>We log hikes, photos, and ratings for each trail we complete.</p>
+  <div class="space-y-6">
+    <div>
+      <h1 class="text-3xl font-bold mb-2">About</h1>
+      <p class="text-zinc-700">
+        RyLuTrails is a simple hiking log documenting trails we’ve completed
+        across Washington, with photos, ratings, and honest reviews.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-semibold mb-2">Our Approach</h2>
+      <p class="text-zinc-700">
+        Each hike is rated based on trail quality, views, crowd level, and overall
+        experience. The goal is to give a quick, useful snapshot of whether a trail
+        is worth your time.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-semibold mb-2">Contact</h2>
+      <p class="text-zinc-700">
+        Questions, recommendations, or feedback:
+      </p>
+
+      <div class="mt-2 text-zinc-700">
+        <p>Email: rylutrails@gmail.com</p>
+      </div>
+    </div>
+  </div>
 </BaseLayout>

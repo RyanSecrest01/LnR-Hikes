@@ -25,5 +25,13 @@ const { title = "RyluTrails" } = Astro.props;
     <main class="mx-auto max-w-5xl px-4 py-8">
       <slot />
     </main>
+
+    <footer class="border-t mt-12">
+      <div class="mx-auto max-w-5xl px-4 py-6 text-sm text-zinc-600 flex justify-between items-center">
+        <p>© {new Date().getFullYear()} RyLuTrails</p>
+        <p>Built by Ryan & Lucas</p>
+      </div>
+    </footer>
+
   </body>
 </html>
