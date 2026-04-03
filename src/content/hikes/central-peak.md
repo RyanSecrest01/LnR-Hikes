@@ -12,6 +12,7 @@ gallery:
   - "/images/hikes/central-peak/3.jpeg"
   - "/images/hikes/central-peak/4.jpeg"
   - "/images/hikes/central-peak/5.jpeg"
+  - "/images/hikes/central-peak/1.jpeg"
 ratings:
   trailQuality: "Clean"
   views: 5

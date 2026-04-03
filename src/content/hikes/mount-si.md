@@ -10,6 +10,7 @@ cover: "/images/hikes/mount-si/cover.jpeg"
 gallery:
   - "/images/hikes/mount-si/1.jpeg"
   - "/images/hikes/mount-si/2.jpeg"
+  - "/images/hikes/mount-si/cover.jpeg"
 ratings:
   trailQuality: "Clean"
   views: 10
