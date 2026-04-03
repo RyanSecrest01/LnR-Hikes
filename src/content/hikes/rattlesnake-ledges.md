@@ -8,10 +8,10 @@ difficulty: "Moderate"
 allTrailsUrl: "https://www.alltrails.com/trail/us/washington/rattlesnake-ledge"
 cover: "/images/hikes/rattlesnake/cover.jpg"
 gallery:
-  - "/images/hikes/rattlesnake/1.jpg"
-  - "/images/hikes/rattlesnake/2.jpg"
+  - "/images/hikes/rattlesnake/1.jpeg"
+  - "/images/hikes/rattlesnake/2.jpeg"
 ratings:
-  trailQuality: "Busy"
+  trailQuality: "Moderate"
   views: 8
   crowd: "Popular"
   overall: 7

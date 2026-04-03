@@ -1,8 +1,43 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const hikes = await getCollection("hikes");
+const latestHikes = hikes.slice(0, 2);
 ---
 
 <BaseLayout title="RyluTrails">
-  <h1 class="text-4xl font-bold">RyluTrails</h1>
-  <p>Hikes, photos, and ratings from Ryan and Lucas.</p>
+  <section class="space-y-4">
+    <h1 class="text-4xl font-bold">RyLuTrails</h1>
+    <p class="text-lg text-zinc-700">
+      Hikes, photos, and ratings from Ryan and Lucas.
+    </p>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="mb-4 text-2xl font-semibold">Latest Hikes</h2>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {latestHikes.map((hike) => (
+        <a
+          href={`/hikes/${hike.id}`}
+          class="block overflow-hidden rounded-xl border transition hover:shadow-md"
+        >
+          <img
+            src={hike.data.cover}
+            alt={hike.data.title}
+            class="h-48 w-full object-cover"
+          />
+
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">{hike.data.title}</h3>
+            <p class="text-sm text-zinc-600">{hike.data.location}</p>
+            <p class="text-sm text-zinc-600">
+              Overall: {hike.data.ratings.overall}/10
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
 </BaseLayout>

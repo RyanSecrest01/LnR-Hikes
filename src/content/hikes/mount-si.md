@@ -8,10 +8,10 @@ difficulty: "Hard"
 allTrailsUrl: "https://www.alltrails.com/trail/us/washington/mount-si-trail"
 cover: "/images/hikes/mount-si/cover.jpeg"
 gallery:
-  - "/images/hikes/mount-si/1.jpg"
-  - "/images/hikes/mount-si/2.jpg"
+  - "/images/hikes/mount-si/1.jpeg"
+  - "/images/hikes/mount-si/2.jpeg"
 ratings:
-  trailQuality: "Moderate"
+  trailQuality: "Clean"
   views: 10
   crowd: "Popular"
   overall: 8
