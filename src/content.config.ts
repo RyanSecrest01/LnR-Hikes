@@ -4,8 +4,7 @@ import { z } from "astro/zod";
 
 const hikes = defineCollection({
   loader: glob({ base: "./src/content/hikes", pattern: "**/*.{md,mdx}" }),
-  schema: ({ image }) =>
-    z.object({
+  schema: z.object({
       title: z.string(),
       date: z.string(),
       location: z.string(),
@@ -13,7 +12,7 @@ const hikes = defineCollection({
       elevationGainFt: z.number(),
       difficulty: z.string(),
       allTrailsUrl: z.string().url(),
-      cover: image(),
+      cover: z.string(),
       gallery: z.array(z.string()),
       ratings: z.object({
         trailQuality: z.string(),
