@@ -2,11 +2,15 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import heroImage from "../assets/hikes/central-peak/4.jpeg";
+import heroImage from "../assets/hikes/central-peak/4.avif";
 
 const hikes = await getCollection("hikes");
+
 const latestHikes = [...hikes]
-  .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
+  .sort(
+    (a, b) =>
+      new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  )
   .slice(0, 2);
 ---
 
