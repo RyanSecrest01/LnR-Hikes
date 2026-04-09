@@ -13,6 +13,7 @@ const hikes = defineCollection({
       difficulty: z.string(),
       allTrailsUrl: z.string().url(),
       cover: image(),
+      coverPosition: z.string().optional(),
       gallery: z.array(image()),
       ratings: z.object({
         trailQuality: z.string(),

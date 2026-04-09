@@ -6,7 +6,8 @@ distanceMiles: 4.0
 elevationGainFt: 1160
 difficulty: "Moderate"
 allTrailsUrl: "https://www.alltrails.com/trail/us/washington/rattlesnake-ledge"
-cover: "../../assets/hikes/rattlesnake/cover.jpg"
+cover: "../../assets/hikes/rattlesnake/1.jpeg"
+coverPosition: "50% 65%"
 gallery:
   - "../../assets/hikes/rattlesnake/1.jpeg"
   - "../../assets/hikes/rattlesnake/2.jpeg"

@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 const hikes = (await getCollection("hikes")).sort(
-  (a, b) => new Date(b.data.date) - new Date(a.data.date)
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 ---
 
@@ -21,8 +21,12 @@ const hikes = (await getCollection("hikes")).sort(
           src={hike.data.cover}
           alt={hike.data.title}
           class="h-48 w-full object-cover"
+          style={`object-position: ${hike.data.coverPosition || "center"}`}
           widths={[500, 900]}
           sizes="(max-width: 768px) 100vw, 50vw"
+          loading="eager"
+          fetchpriority="high"
+          decoding="sync"
         />
 
         <div class="p-4">

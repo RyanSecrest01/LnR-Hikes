@@ -25,6 +25,8 @@ const latestHikes = [...hikes]
       class="h-72 w-full object-cover"
       widths={[800, 1200, 1600]}
       sizes="(max-width: 768px) 100vw, 1200px"
+      loading="eager"
+      fetchpriority="high"
     />
   </div>
 
@@ -43,6 +45,8 @@ const latestHikes = [...hikes]
             class="h-48 w-full object-cover"
             widths={[500, 900]}
             sizes="(max-width: 768px) 100vw, 50vw"
+            loading="eager"
+            fetchpriority="high"
           />
 
           <div class="p-4">

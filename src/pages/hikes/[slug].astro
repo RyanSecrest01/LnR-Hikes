@@ -29,6 +29,8 @@ const { Content } = await render(hike);
       class="h-72 w-full rounded-xl object-cover"
       widths={[800, 1200, 1600]}
       sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
     />
 
     <div class="grid gap-3 rounded-xl border p-4 text-sm md:grid-cols-2">
@@ -90,7 +92,7 @@ const { Content } = await render(hike);
         <h2 class="mb-3 text-2xl font-semibold">Photos</h2>
 
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {hike.data.gallery.map((img) => (
+          {hike.data.gallery.map((img, index) => (
             <Image
               src={img}
               alt={hike.data.title}
@@ -98,11 +100,134 @@ const { Content } = await render(hike);
               widths={[500, 900, 1400]}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               data-full={img.src}
+              data-index={index}
             />
           ))}
         </div>
       </section>
     )}
+
+    <div>
+      <h2 class="mb-2 text-2xl font-semibold">Review</h2>
+      <div class="prose max-w-none">
+        <Content />
+      </div>
+    </div>
+
+      <div
+        id="image-modal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"
+      >
+      <button
+        id="close-modal"
+        class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-xl text-white backdrop-blur transition
+              hover:bg-white/40 hover:scale-110
+              active:scale-95 active:bg-white/60"
+        type="button"
+      >
+        ×
+      </button>
+
+      <button
+        id="prev-image"
+        class="absolute left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl text-white backdrop-blur transition
+              hover:bg-white/40 hover:scale-110
+              active:scale-95 active:bg-white/60"
+        type="button"
+      >
+        <span class="relative -top-[1px]">‹</span>
+      </button>
+
+      <img
+        id="modal-image"
+        src=""
+        alt="Expanded hike photo"
+        class="max-h-[90vh] max-w-[90vw] rounded-xl object-contain"
+      />
+
+      <button
+        id="next-image"
+        class="absolute right-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl text-white backdrop-blur transition
+              hover:bg-white/40 hover:scale-110
+              active:scale-95 active:bg-white/60"
+        type="button"
+      >
+        <span class="relative -top-[1px]">›</span>
+      </button>
+        ›
+      </button>
+    </div>
+  </article>
+
+  <script define:vars={{ gallery: hike.data.gallery.map((img) => img.src) }}>
+    const modal = document.getElementById("image-modal");
+    const modalImage = document.getElementById("modal-image");
+    const galleryImages = document.querySelectorAll(".gallery-image");
+    const prevButton = document.getElementById("prev-image");
+    const nextButton = document.getElementById("next-image");
+    const closeButton = document.getElementById("close-modal");
+
+    let currentIndex = 0;
+
+    function openModal(index) {
+      if (!modal || !modalImage) return;
+      currentIndex = index;
+      modalImage.setAttribute("src", gallery[currentIndex]);
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeModal() {
+      if (!modal || !modalImage) return;
+      modal.classList.remove("flex");
+      modal.classList.add("hidden");
+      modalImage.setAttribute("src", "");
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % gallery.length;
+      modalImage?.setAttribute("src", gallery[currentIndex]);
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+      modalImage?.setAttribute("src", gallery[currentIndex]);
+    }
+
+    galleryImages.forEach((img) => {
+      img.addEventListener("click", () => {
+        const index = Number(img.getAttribute("data-index"));
+        openModal(index);
+      });
+    });
+
+    nextButton?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showNext();
+    });
+
+    prevButton?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showPrev();
+    });
+
+    closeButton?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeModal();
+    });
+
+    modal?.addEventListener("click", () => {
+      closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (modal?.classList.contains("hidden")) return;
+
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") showPrev();
+    });
+  </script>
 
     <div>
       <h2 class="mb-2 text-2xl font-semibold">Review</h2>
