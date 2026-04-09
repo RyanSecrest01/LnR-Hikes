@@ -33,89 +33,145 @@ const { Content } = await render(hike);
       fetchpriority="high"
     />
 
-    <div class="grid gap-3 rounded-xl border p-4 text-sm md:grid-cols-2">
-      <p><strong>Distance:</strong> {hike.data.distanceMiles} miles</p>
-      <p><strong>Elevation Gain:</strong> {hike.data.elevationGainFt} ft</p>
-      <p><strong>Difficulty:</strong> {hike.data.difficulty}</p>
-      <p><strong>Overall:</strong> {hike.data.ratings.overall}/10</p>
-    </div>
-
-    <div>
-      <a
-        href={hike.data.allTrailsUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block rounded-lg border px-4 py-2 text-sm font-medium hover:bg-zinc-50"
-      >
-        View on AllTrails
-      </a>
-    </div>
-
-    {hike.data.tags.length > 0 && (
+    <div class="border-b">
       <div class="flex flex-wrap gap-2">
-        {hike.data.tags.map((tag) => (
-          <span class="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-700">
-            {tag}
-          </span>
-        ))}
+        <button
+          id="tab-overview"
+          class="rounded-t-lg border border-b-0 bg-zinc-100 px-4 py-2 text-sm font-medium"
+          type="button"
+        >
+          Overview
+        </button>
+    
+        <button
+          id="tab-story"
+          class="rounded-t-lg border border-b-0 bg-white px-4 py-2 text-sm font-medium text-zinc-500"
+          type="button"
+        >
+          Story
+        </button>
+    
+        <button
+          id="tab-photos"
+          class="rounded-t-lg border border-b-0 bg-white px-4 py-2 text-sm font-medium text-zinc-500"
+          type="button"
+        >
+          Photos
+        </button>
+    
+        <button
+          id="tab-route"
+          class="rounded-t-lg border border-b-0 bg-white px-4 py-2 text-sm font-medium text-zinc-500"
+          type="button"
+        >
+          Route
+        </button>
       </div>
-    )}
+    </div>
 
-    <section>
-      <h2 class="mb-3 text-2xl font-semibold">Ratings</h2>
-
-      <div class="grid gap-3 md:grid-cols-2">
-        <div class="rounded-xl border p-4">
-          <p class="text-sm text-zinc-500">Trail Quality</p>
-          <p class="text-2xl font-bold">{hike.data.ratings.trailQuality}</p>
-        </div>
-
-        <div class="rounded-xl border p-4">
-          <p class="text-sm text-zinc-500">Views</p>
-          <p class="text-2xl font-bold">{hike.data.ratings.views}/10</p>
-        </div>
-
-        <div class="rounded-xl border p-4">
-          <p class="text-sm text-zinc-500">Crowd</p>
-          <p class="text-2xl font-bold">{hike.data.ratings.crowd}</p>
-        </div>
-
-        <div class="rounded-xl border p-4">
-          <p class="text-sm text-zinc-500">Overall</p>
-          <p class="text-2xl font-bold">{hike.data.ratings.overall}/10</p>
-        </div>
+    <div id="panel-overview" class="space-y-6 pt-6">
+      <div class="grid gap-3 rounded-xl border p-4 text-sm md:grid-cols-2">
+        <p><strong>Distance:</strong> {hike.data.distanceMiles} miles</p>
+        <p><strong>Elevation Gain:</strong> {hike.data.elevationGainFt} ft</p>
+        <p><strong>Difficulty:</strong> {hike.data.difficulty}</p>
+        <p><strong>Overall:</strong> {hike.data.ratings.overall}/10</p>
       </div>
-    </section>
 
-    {hike.data.gallery.length > 0 && (
-      <section>
-        <h2 class="mb-3 text-2xl font-semibold">Photos</h2>
+      <div>
+        <a
+          href={hike.data.allTrailsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block rounded-lg border px-4 py-2 text-sm font-medium hover:bg-zinc-50"
+        >
+          View on AllTrails
+        </a>
+      </div>
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {hike.data.gallery.map((img, index) => (
-            <Image
-              src={img}
-              alt={hike.data.title}
-              class="gallery-image h-56 w-full cursor-pointer rounded-xl object-cover transition hover:scale-[1.02]"
-              widths={[500, 900, 1400]}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              data-full={img.src}
-              data-index={index}
-            />
+      {hike.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {hike.data.tags.map((tag) => (
+            <span class="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-700">
+              {tag}
+            </span>
           ))}
         </div>
-      </section>
-    )}
+      )}
 
-      <div
-        id="image-modal"
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"
-      >
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold">Ratings</h2>
+
+        <div class="grid gap-3 md:grid-cols-2">
+          <div class="rounded-xl border p-4">
+            <p class="text-sm text-zinc-500">Trail Quality</p>
+            <p class="text-2xl font-bold">{hike.data.ratings.trailQuality}</p>
+          </div>
+
+          <div class="rounded-xl border p-4">
+            <p class="text-sm text-zinc-500">Views</p>
+            <p class="text-2xl font-bold">{hike.data.ratings.views}/10</p>
+          </div>
+
+          <div class="rounded-xl border p-4">
+            <p class="text-sm text-zinc-500">Crowd</p>
+            <p class="text-2xl font-bold">{hike.data.ratings.crowd}</p>
+          </div>
+
+          <div class="rounded-xl border p-4">
+            <p class="text-sm text-zinc-500">Overall</p>
+            <p class="text-2xl font-bold">{hike.data.ratings.overall}/10</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="panel-story" class="hidden space-y-6 pt-6">
+      <div>
+        <h2 class="mb-2 text-2xl font-semibold">Story</h2>
+        <div class="prose max-w-none">
+          <Content />
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-photos" class="hidden space-y-6 pt-6">
+      {hike.data.gallery.length > 0 && (
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold">Photos</h2>
+    
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {hike.data.gallery.map((img, index) => (
+              <Image
+                src={img}
+                alt={hike.data.title}
+                class="gallery-image h-56 w-full cursor-pointer rounded-xl object-cover transition hover:scale-[1.02]"
+                widths={[500, 900, 1400]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                data-full={img.src}
+                data-index={index}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+
+    <div id="panel-route" class="hidden space-y-6 pt-6">
+      <section>
+        <h2 class="mb-3 text-2xl font-semibold">Route</h2>
+        <p class="text-zinc-700">
+          Route map, GPX data, and elevation profile will go here.
+        </p>
+      </section>
+    </div>
+
+    <div
+      id="image-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"
+    >
       <button
         id="close-modal"
-        class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-xl text-white backdrop-blur transition
-              hover:bg-white/40 hover:scale-110
-              active:scale-95 active:bg-white/60"
+        class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-xl text-white backdrop-blur transition hover:bg-white/40 hover:scale-110 active:scale-95 active:bg-white/60"
         type="button"
       >
         ×
@@ -123,9 +179,7 @@ const { Content } = await render(hike);
 
       <button
         id="prev-image"
-        class="absolute left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl text-white backdrop-blur transition
-              hover:bg-white/40 hover:scale-110
-              active:scale-95 active:bg-white/60"
+        class="absolute left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl text-white backdrop-blur transition hover:bg-white/40 hover:scale-110 active:scale-95 active:bg-white/60"
         type="button"
       >
         <span class="relative -top-[1px]">‹</span>
@@ -140,14 +194,10 @@ const { Content } = await render(hike);
 
       <button
         id="next-image"
-        class="absolute right-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl text-white backdrop-blur transition
-              hover:bg-white/40 hover:scale-110
-              active:scale-95 active:bg-white/60"
+        class="absolute right-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl text-white backdrop-blur transition hover:bg-white/40 hover:scale-110 active:scale-95 active:bg-white/60"
         type="button"
       >
         <span class="relative -top-[1px]">›</span>
-      </button>
-        ›
       </button>
     </div>
   </article>
@@ -159,6 +209,15 @@ const { Content } = await render(hike);
     const prevButton = document.getElementById("prev-image");
     const nextButton = document.getElementById("next-image");
     const closeButton = document.getElementById("close-modal");
+
+    const overviewTab = document.getElementById("tab-overview");
+    const storyTab = document.getElementById("tab-story");
+    const overviewPanel = document.getElementById("panel-overview");
+    const storyPanel = document.getElementById("panel-story");
+    const photosTab = document.getElementById("tab-photos");
+    const routeTab = document.getElementById("tab-route");
+    const photosPanel = document.getElementById("panel-photos");
+    const routePanel = document.getElementById("panel-route");
 
     let currentIndex = 0;
 
@@ -186,6 +245,38 @@ const { Content } = await render(hike);
       currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
       modalImage?.setAttribute("src", gallery[currentIndex]);
     }
+
+    function activateTab(activeTab, activePanel) {
+      const tabs = [overviewTab, storyTab, photosTab, routeTab];
+      const panels = [overviewPanel, storyPanel, photosPanel, routePanel];
+
+      panels.forEach((panel) => panel?.classList.add("hidden"));
+      activePanel?.classList.remove("hidden");
+
+      tabs.forEach((tab) => {
+        tab?.classList.remove("bg-zinc-100");
+        tab?.classList.add("bg-white", "text-zinc-500");
+      });
+
+      activeTab?.classList.add("bg-zinc-100");
+      activeTab?.classList.remove("bg-white", "text-zinc-500");
+    }
+
+    overviewTab?.addEventListener("click", () => {
+      activateTab(overviewTab, overviewPanel);
+    });
+
+    storyTab?.addEventListener("click", () => {
+      activateTab(storyTab, storyPanel);
+    });
+
+    photosTab?.addEventListener("click", () => {
+      activateTab(photosTab, photosPanel);
+    });
+
+    routeTab?.addEventListener("click", () => {
+      activateTab(routeTab, routePanel);
+    });
 
     galleryImages.forEach((img) => {
       img.addEventListener("click", () => {
@@ -219,49 +310,6 @@ const { Content } = await render(hike);
       if (e.key === "Escape") closeModal();
       if (e.key === "ArrowRight") showNext();
       if (e.key === "ArrowLeft") showPrev();
-    });
-  </script>
-
-    <div>
-      <h2 class="mb-2 text-2xl font-semibold">Review</h2>
-      <div class="prose max-w-none">
-        <Content />
-      </div>
-    </div>
-
-    <div
-      id="image-modal"
-      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"
-    >
-      <img
-        id="modal-image"
-        src=""
-        alt="Expanded hike photo"
-        class="max-h-[90vh] max-w-[90vw] rounded-xl object-contain"
-      />
-    </div>
-  </article>
-
-  <script>
-    const modal = document.getElementById("image-modal");
-    const modalImage = document.getElementById("modal-image");
-    const galleryImages = document.querySelectorAll(".gallery-image");
-
-    galleryImages.forEach((img) => {
-      img.addEventListener("click", () => {
-        const full = img.getAttribute("data-full");
-        if (!full || !modal || !modalImage) return;
-
-        modalImage.setAttribute("src", full);
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-      });
-    });
-
-    modal?.addEventListener("click", () => {
-      modal.classList.remove("flex");
-      modal.classList.add("hidden");
-      modalImage?.setAttribute("src", "");
     });
   </script>
 </BaseLayout>
