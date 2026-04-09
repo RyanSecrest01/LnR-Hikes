@@ -6,17 +6,17 @@ distanceMiles: 2.8
 elevationGainFt: 679
 difficulty: "Easy"
 allTrailsUrl: "https://www.alltrails.com/trail/japan/kyoto/fushimi-inari-walking-tour"
-cover: "../../assets/hikes/fushimi-inari-taisha/2.jpeg"
+cover: "../../assets/hikes/fushimi-inari-taisha/2.avif"
 gallery:
-  - "../../assets/hikes/fushimi-inari-taisha/1.jpeg"
-  - "../../assets/hikes/fushimi-inari-taisha/3.jpeg"
-  - "../../assets/hikes/fushimi-inari-taisha/4.jpeg"
-  - "../../assets/hikes/fushimi-inari-taisha/5.jpeg"
-  - "../../assets/hikes/fushimi-inari-taisha/6.jpeg"
-  - "../../assets/hikes/fushimi-inari-taisha/7.jpeg"
-  - "../../assets/hikes/fushimi-inari-taisha/8.jpeg"
-  - "../../assets/hikes/fushimi-inari-taisha/9.jpeg"
-  - "../../assets/hikes/fushimi-inari-taisha/10.jpeg"
+  - "../../assets/hikes/fushimi-inari-taisha/1.avif"
+  - "../../assets/hikes/fushimi-inari-taisha/3.avif"
+  - "../../assets/hikes/fushimi-inari-taisha/4.avif"
+  - "../../assets/hikes/fushimi-inari-taisha/5.avif"
+  - "../../assets/hikes/fushimi-inari-taisha/6.avif"
+  - "../../assets/hikes/fushimi-inari-taisha/7.avif"
+  - "../../assets/hikes/fushimi-inari-taisha/8.avif"
+  - "../../assets/hikes/fushimi-inari-taisha/9.avif"
+  - "../../assets/hikes/fushimi-inari-taisha/10.avif"
 ratings:
   trailQuality: "Clean"
   views: 8

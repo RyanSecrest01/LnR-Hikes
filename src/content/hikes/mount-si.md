@@ -6,11 +6,11 @@ distanceMiles: 8.0
 elevationGainFt: 3150
 difficulty: "Hard"
 allTrailsUrl: "https://www.alltrails.com/trail/us/washington/mount-si-trail"
-cover: "../../assets/hikes/mount-si/cover.jpeg"
+cover: "../../assets/hikes/mount-si/cover.avif"
 gallery:
-  - "../../assets/hikes/mount-si/1.jpeg"
-  - "../../assets/hikes/mount-si/2.jpeg"
-  - "../../assets/hikes/mount-si/cover.jpeg"
+  - "../../assets/hikes/mount-si/1.avif"
+  - "../../assets/hikes/mount-si/2.avif"
+  - "../../assets/hikes/mount-si/cover.avif"
 ratings:
   trailQuality: "Clean"
   views: 10
