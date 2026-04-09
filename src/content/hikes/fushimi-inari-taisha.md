@@ -1,5 +1,5 @@
 ---
-title: "Fushimi Inari Taisa"
+title: "Fushimi Inari Taisha"
 date: "2026-03-20"
 location: "Kyoto, Japan"
 distanceMiles: 2.8
