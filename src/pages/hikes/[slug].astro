@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const hikes = await getCollection("hikes");
@@ -22,10 +23,12 @@ const { Content } = await render(hike);
       <p class="text-zinc-600">{hike.data.location}</p>
     </div>
 
-    <img
+    <Image
       src={hike.data.cover}
       alt={hike.data.title}
       class="h-72 w-full rounded-xl object-cover"
+      widths={[800, 1200, 1600]}
+      sizes="100vw"
     />
 
     <div class="grid gap-3 rounded-xl border p-4 text-sm md:grid-cols-2">
@@ -88,11 +91,13 @@ const { Content } = await render(hike);
 
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {hike.data.gallery.map((img) => (
-            <img
+            <Image
               src={img}
               alt={hike.data.title}
               class="gallery-image h-56 w-full cursor-pointer rounded-xl object-cover transition hover:scale-[1.02]"
-              data-full={img}
+              widths={[500, 900, 1400]}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              data-full={img.src}
             />
           ))}
         </div>

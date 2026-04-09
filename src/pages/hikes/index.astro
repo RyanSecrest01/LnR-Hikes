@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 const hikes = (await getCollection("hikes")).sort(
   (a, b) => new Date(b.data.date) - new Date(a.data.date)
@@ -16,10 +17,12 @@ const hikes = (await getCollection("hikes")).sort(
         href={`/hikes/${hike.id}`}
         class="block overflow-hidden rounded-xl border transition hover:shadow-md"
       >
-        <img
+        <Image
           src={hike.data.cover}
           alt={hike.data.title}
           class="h-48 w-full object-cover"
+          widths={[500, 900]}
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
 
         <div class="p-4">

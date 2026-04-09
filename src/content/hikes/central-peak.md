@@ -6,13 +6,13 @@ distanceMiles: 6.5
 elevationGainFt: 2200
 difficulty: "Moderate"
 allTrailsUrl: "https://www.alltrails.com/trail/us/washington/west-and-central-squak-mountain-and-debbies-view"
-cover: "/images/hikes/central-peak/1.jpeg"
+cover: "../../assets/hikes/central-peak/1.jpeg"
 gallery:
-  - "/images/hikes/central-peak/2.jpeg"
-  - "/images/hikes/central-peak/3.jpeg"
-  - "/images/hikes/central-peak/4.jpeg"
-  - "/images/hikes/central-peak/5.jpeg"
-  - "/images/hikes/central-peak/1.jpeg"
+  - "../../assets/hikes/central-peak/2.jpeg"
+  - "../../assets/hikes/central-peak/3.jpeg"
+  - "../../assets/hikes/central-peak/4.jpeg"
+  - "../../assets/hikes/central-peak/5.jpeg"
+  - "../../assets/hikes/central-peak/1.jpeg"
 ratings:
   trailQuality: "Clean"
   views: 5
