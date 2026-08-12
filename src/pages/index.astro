@@ -2,66 +2,131 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import heroImage from "../assets/hikes/central-peak/4.avif";
+import heroImage from "../assets/hikes/mt-baker/2.avif";
 
-const hikes = await getCollection("hikes");
+const hikes = (await getCollection("hikes")).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 
-const latestHikes = [...hikes]
-  .sort(
-    (a, b) =>
-      new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-  )
-  .slice(0, 2);
+const latestHikes = hikes.slice(0, 3);
 ---
 
-<BaseLayout title="RyluTrails">
-  <section class="space-y-4">
-    <h1 class="text-4xl font-bold">RyluTrails</h1>
-    <p class="text-lg text-zinc-700">
-      Hikes, photos, and ratings from Ryan and Lucas.
-    </p>
-  </section>
-
-  <div class="mt-6 overflow-hidden rounded-2xl border">
+<BaseLayout title="RyLuTrails">
+  <section class="relative overflow-hidden rounded-2xl">
     <Image
       src={heroImage}
-      alt="RyluTrails featured hike"
-      class="h-72 w-full object-cover"
+      alt="Mount Baker"
+      class="h-[460px] w-full object-cover"
       widths={[800, 1200, 1600]}
-      sizes="(max-width: 768px) 100vw, 1200px"
+      sizes="100vw"
       loading="eager"
       fetchpriority="high"
     />
-  </div>
 
-  <section class="mt-10">
-    <h2 class="mb-4 text-2xl font-semibold">Latest Hikes</h2>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 
-    <div class="grid gap-6 md:grid-cols-2">
+    <div class="absolute bottom-0 left-0 max-w-2xl p-8 text-white md:p-12">
+      <p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/80">
+        Ryan + Lucas (and Clay!)
+      </p>
+
+      <h1 class="text-4xl font-bold md:text-6xl">
+        RyLuTrails
+      </h1>
+
+      <p class="mt-4 max-w-xl text-lg text-white/90">
+        A collection of trails, climbs, and adventures — rated from our own experience.
+      </p>
+
+      <a
+        href="/hikes"
+        class="mt-6 inline-block rounded-lg bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-100"
+      >
+        Explore Our Hikes
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-14">
+    <div class="mb-6 flex items-end justify-between">
+      <div>
+        <p class="text-sm font-medium uppercase tracking-wide text-zinc-500">
+          Recent Adventures
+        </p>
+
+        <h2 class="mt-1 text-3xl font-bold">
+          Latest Hikes
+        </h2>
+      </div>
+
+      <a
+        href="/hikes"
+        class="text-sm font-medium text-zinc-600 transition hover:text-zinc-950"
+      >
+        View all hikes →
+      </a>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3">
       {latestHikes.map((hike) => (
         <a
           href={`/hikes/${hike.id}`}
-          class="block overflow-hidden rounded-xl border transition hover:shadow-md"
+          class="group block overflow-hidden rounded-xl border transition hover:-translate-y-1 hover:shadow-lg"
         >
-          <Image
-            src={hike.data.cover}
-            alt={hike.data.title}
-            class="h-48 w-full object-cover"
-            widths={[500, 900]}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            loading="eager"
-            fetchpriority="high"
-          />
+          <div class="overflow-hidden">
+            <Image
+              src={hike.data.cover}
+              alt={hike.data.title}
+              class="h-52 w-full object-cover transition duration-300 group-hover:scale-105"
+              style={`object-position: ${hike.data.coverPosition || "center"}`}
+              widths={[500, 900]}
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          </div>
 
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">{hike.data.title}</h3>
-            <p class="text-sm text-zinc-600">{hike.data.location}</p>
-            <p class="text-sm text-zinc-600">
-              Overall: {hike.data.ratings.overall}/10
-            </p>
+          <div class="p-5">
+            <div class="mb-2 flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-semibold">
+                  {hike.data.title}
+                </h3>
+
+                <p class="text-sm text-zinc-500">
+                  {hike.data.location}
+                </p>
+              </div>
+
+              <span class="shrink-0 rounded-full bg-zinc-100 px-2.5 py-1 text-sm font-semibold">
+                {hike.data.ratings.overall}/10
+              </span>
+            </div>
+
+            <div class="mt-4 flex gap-4 text-sm text-zinc-600">
+              <span>{hike.data.distanceMiles} mi</span>
+              <span>{hike.data.elevationGainFt.toLocaleString()} ft</span>
+              <span>{hike.data.difficulty}</span>
+            </div>
           </div>
         </a>
       ))}
     </div>
+  </section>
+
+  <section class="mt-16 rounded-2xl bg-zinc-100 px-8 py-10 text-center">
+    <h2 class="text-2xl font-bold">
+      Every trail has a story.
+    </h2>
+
+    <p class="mx-auto mt-3 max-w-xl text-zinc-600">
+      From quick local hikes to glacier climbs, we keep track of where we’ve been,
+      what we thought, and what we’d actually recommend.
+    </p>
+
+    <a
+      href="/hikes"
+      class="mt-6 inline-block rounded-lg bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-700"
+    >
+      Browse All Adventures
+    </a>
   </section>
 </BaseLayout>
