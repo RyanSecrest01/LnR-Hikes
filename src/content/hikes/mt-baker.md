@@ -7,7 +7,7 @@ elevationGainFt: 7400
 difficulty: "Very Hard"
 allTrailsUrl: "https://www.alltrails.com/trail/us/washington/mount-baker-via-easton-glacier"
 cover: "../../assets/hikes/mt-baker/26.avif"
-routeVideo: "../../../public/videos/mt-baker-route.mp4"
+routeVideo: "/videos/mt-baker-route.mp4"
 coverPosition: "center 35%"
 gallery:
   - "../../assets/hikes/mt-baker/2.avif"
