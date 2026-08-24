@@ -15,6 +15,7 @@ const hikes = defineCollection({
       cover: image(),
       coverPosition: z.string().optional(),
       gallery: z.array(image()),
+      routeVideo: z.string().optional(),
       ratings: z.object({
         trailQuality: z.string(),
         views: z.number().min(1).max(10),

@@ -27,6 +27,7 @@ const { Content } = await render(hike);
       src={hike.data.cover}
       alt={hike.data.title}
       class="h-72 w-full rounded-xl object-cover"
+      style={`object-position: ${hike.data.coverPosition || "center"}`}
       widths={[800, 1200, 1600]}
       sizes="100vw"
       loading="eager"
@@ -159,9 +160,40 @@ const { Content } = await render(hike);
     <div id="panel-route" class="hidden space-y-6 pt-6">
       <section>
         <h2 class="mb-3 text-2xl font-semibold">Route</h2>
-        <p class="text-zinc-700">
-          Route map, GPX data, and elevation profile will go here.
-        </p>
+    
+        {hike.data.routeVideo ? (
+          <div class="space-y-6">
+            <div class="mx-auto max-w-sm overflow-hidden rounded-2xl bg-black shadow-lg">
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                class="w-full"
+              >
+                <source src={hike.data.routeVideo} type="video/mp4" />
+                Your browser does not support the video element.
+              </video>
+            </div>
+    
+            <div class="mx-auto max-w-xl text-center">
+              <h3 class="text-lg font-semibold">
+                Mt Baker — Easton Glacier
+              </h3>
+    
+              <p class="mt-1 text-sm text-zinc-600">
+                14 miles • 7,400 ft elevation gain • 10,781 ft summit
+              </p>
+    
+              <p class="mt-3 text-sm text-zinc-500">
+                3D route replay recorded from our climb.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <p class="text-zinc-700">
+            No route replay is available for this hike yet.
+          </p>
+        )}
       </section>
     </div>
 
